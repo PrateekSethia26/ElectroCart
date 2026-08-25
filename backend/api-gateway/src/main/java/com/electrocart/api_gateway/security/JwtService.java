@@ -18,7 +18,7 @@ public class JwtService {
         this.secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-    public Claims ValidateToken(String token){
+    public Claims validateToken(String token){
 
         return Jwts.parser()
                 .verifyWith(secretKey)

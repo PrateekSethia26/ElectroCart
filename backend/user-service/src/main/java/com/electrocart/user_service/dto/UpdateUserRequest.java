@@ -1,0 +1,18 @@
+package com.electrocart.user_service.dto;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+public record UpdateUserRequest (
+
+    @NotBlank(message = "First name is required")
+    String firstName,
+
+    @NotBlank(message = "Last name is required")
+    String lastName,
+
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid Email format")
+    String email
+){
+}

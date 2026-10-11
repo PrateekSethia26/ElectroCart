@@ -1,8 +1,6 @@
 package com.electrocart.api_gateway.config;
 
 import com.electrocart.api_gateway.security.JwtAuthenticationFilter;
-import com.electrocart.api_gateway.security.JwtService;
-import org.springframework.cloud.gateway.server.mvc.filter.BeforeFilterFunctions;
 import org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,6 +41,17 @@ public class GatewayRoutesConfig {
                 )
                 .filter(lb("USER-SERVICE"))
                 .filter(jwtAuthenticationFilter.apply())
+                .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> productRoutes(){
+        return route("product-service")
+                .route(
+                        path("/api/products/**"),
+                        HandlerFunctions.http()
+                )
+                .filter(lb("PRODUCT-SERVICE"))
                 .build();
     }
 }

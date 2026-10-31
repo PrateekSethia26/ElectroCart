@@ -41,10 +41,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST,"/api/products/**")
                         .hasRole("ADMIN")
 
-                        .requestMatchers(HttpMethod.POST,"/api/products/**")
+                        .requestMatchers(HttpMethod.PUT,"/api/products/**")
                         .hasRole("ADMIN")
 
-                        .requestMatchers(HttpMethod.POST,"/api/products/**")
+                        .requestMatchers(HttpMethod.DELETE,"/api/products/**")
                         .hasRole("ADMIN")
 
                          // Everything else requires authentication

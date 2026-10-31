@@ -54,4 +54,15 @@ public class GatewayRoutesConfig {
                 .filter(lb("PRODUCT-SERVICE"))
                 .build();
     }
+
+    @Bean
+    public RouterFunction<ServerResponse> inventoryRoutes(){
+        return route("inventory-service")
+                .route(
+                        path("/api/inventory/**"),
+                        HandlerFunctions.http()
+                )
+                .filter(lb("INVENTORY-SERVICE"))
+                .build();
+    }
 }
